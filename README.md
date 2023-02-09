@@ -25,4 +25,43 @@ Aplikasi Ini menggunakan framework Vue 3 & Vite (SPA) yang telah diintregasikan 
 
 ## Demo
 * Login
-![Gambar teks editor VS Code](./public/demos/login.png)
+
+![Halaman Login](./public/demos/login.png)
+* Dashboard
+
+![Halaman dashboard 1](./public/demos/Dashboard/dashboard.png)
+
+![Halaman dashboard 2](./public/demos/Dashboard/dashboard-nav.png)
+
+![Halaman dashboard responsive 1](./public/demos/Dashboard/dashboard-responsive.png)
+
+![Halaman dashboard responsive 2](./public/demos/Dashboard/dashboard-nav-responsive.png)
+* Page Positions
+    * Halaman Utama
+    ![Halaman Positions](./public/demos/Positions/default.jpg)
+    * Tambah
+    ![Tambah Position](./public/demos/Positions/Add.JPG)
+    * Edit
+    ![Edit Position](./public/demos/Positions/Edit.JPG)
+    * Hapus
+    ![Hapus Position](./public/demos/Positions/Delete.JPG)
+* Page Employees
+    * Halaman Utama
+    ![Halaman Employees](./public/demos/Employees/default.jpg)
+    * Tambah
+    ![Tambah Employee](./public/demos/Employees/Add.JPG)
+    * Edit
+    ![Edit Employee](./public/demos/Employees/Edit.JPG)
+    * Hapus
+    ![Hapus Employee](./public/demos/Employees/Delete.JPG)
+* Page Sallarys
+    * Halaman Utama
+    ![Halaman Sallarys](./public/demos/Sallarys/default.jpg)
+    * Tambah
+    ![Tambah Sallary](./public/demos/Sallarys/Add.JPG)
+    * Edit
+    ![Edit Sallary](./public/demos/Sallarys/Edit.JPG)
+    * Hapus
+    ![Hapus Sallary](./public/demos/Sallarys/Delete.JPG)
+
+Thanks you...

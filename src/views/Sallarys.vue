@@ -110,12 +110,6 @@ import ModalAlert from '../components/ModalAlert.vue'
     :toggle="toggleModalCreate"
     @onToggle="onToggleModalCreate"
     >
-                <!-- basic_sallary: 0,
-                allowance: 0,
-                payday: "",
-                notes: "",
-                employee_id: "",
-                isDeleted: false, -->
         <template #modal_body>
             <div class="flex flex-wrap">
                 <div class="mb-4 w-1/2 pr-2">
@@ -182,7 +176,7 @@ import ModalAlert from '../components/ModalAlert.vue'
 
     <!-- Modal Delete -->
     <ModalAlert
-    text="Are you sure you want to delete this product?"
+    text="Are you sure you want to delete this sallary?"
     :toggle="toggleModalDelete"
     @onToggle="onToggleModalDelete"
     />

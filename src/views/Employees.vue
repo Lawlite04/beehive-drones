@@ -106,17 +106,11 @@ import ModalAlert from '../components/ModalAlert.vue'
 
     <!-- Modal Add -->
     <Modal 
-    title="Create Position"
+    title="Create Employee"
     :toggle="toggleModalCreate"
     @onToggle="onToggleModalCreate"
     @submitted="onAdd"
      >
-     <!-- nik: '',
-                name: '',
-                address: "",
-                phone: "",
-                email: "",
-                position_id: '', -->
         <template #modal_body>
             <div class="flex flex-wrap">
                 <div class="mb-4 w-1/2 pr-2">
@@ -152,7 +146,7 @@ import ModalAlert from '../components/ModalAlert.vue'
 
     <!-- Modal Edit -->
     <Modal
-    title="Edit Position"
+    title="Edit Employee"
     :toggle="toggleModalEdit"
     @onToggle="onToggleModalEdit"
     @submitted="onUpdate"
@@ -192,7 +186,7 @@ import ModalAlert from '../components/ModalAlert.vue'
 
     <!-- Modal Delete -->
     <ModalAlert
-    text="Are you sure you want to delete this product?"
+    text="Are you sure you want to delete this employee?"
     :toggle="toggleModalDelete"
     @onToggle="onToggleModalDelete"
     @confirmed="onDelete"

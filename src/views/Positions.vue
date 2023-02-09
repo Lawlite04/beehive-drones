@@ -139,7 +139,7 @@ import ModalAlert from '../components/ModalAlert.vue'
 
     <!-- Modal Delete -->
     <ModalAlert
-    text="Are you sure you want to delete this product?"
+    text="Are you sure you want to delete this position?"
     :toggle="toggleModalDelete"
     :id="id"
     :isLoading="isLoading"
