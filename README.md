@@ -6,5 +6,23 @@ This template should help get you started developing with Vue 3 in Vite. The tem
 
 - [VS Code](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
 
-Documentation
+## Documentation
+Aplikasi Ini menggunakan framework Vue 3 & Vite (SPA) yang telah diintregasikan dengan API
 
+### Pages & Fiturs
+
+* Login
+* Dashboard
+* Data Posisi Pegawai
+  * CRUD
+  * Pagination
+* Data Pegawai
+  * CRUD
+  * Pagination
+* Data Gaji Pegawai
+  * CRUD
+  * Pagination
+
+## Demo
+* Login
+![Gambar teks editor VS Code]()
