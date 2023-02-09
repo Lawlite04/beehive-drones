@@ -56,7 +56,7 @@ Aplikasi Ini menggunakan framework Vue 3 & Vite (SPA) yang telah diintregasikan 
     ![Hapus Employee](./public/demos/Employees/Delete.JPG)
 * Page Sallarys
     * Halaman Utama
-    ![Halaman Sallarys](./public/demos/Sallarys/default.jpg)
+    ![Halaman Sallarys](./public/demos/Sallarys/Default.jpg)
     * Tambah
     ![Tambah Sallary](./public/demos/Sallarys/Add.JPG)
     * Edit
