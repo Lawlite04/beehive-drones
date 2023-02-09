@@ -1,0 +1,37 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.nav-link {
+    @apply flex justify-start items-center px-4 py-4 cursor-pointer
+}
+
+.content-main {
+    width: calc(100%);
+    @apply absolute lg:left-[300px] min-h-screen transition-all duration-500 ease-in-out
+}
+
+@media (min-width: 1024px) {
+    .content-main {
+        width: calc(100% - 300px);
+    }
+    
+    .content-main.active {
+        width: calc(100% - 60px);
+        @apply left-[60px]
+    }
+
+}
+
+.card {
+    @apply flex justify-between items-start bg-white p-5 rounded-lg shadow-md cursor-pointer hover:bg-white/75 transition-colors duration-200 ease-in-out
+}
+.card-number {
+    @apply text-[2em] font-semibold text-gray-900
+}
+.card-text {
+    @apply text-base font-medium text-[#999]
+}
+.card-icon {
+    @apply w-12 h-12 text-[#03a9f4]
+}
