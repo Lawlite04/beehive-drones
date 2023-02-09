@@ -25,4 +25,4 @@ Aplikasi Ini menggunakan framework Vue 3 & Vite (SPA) yang telah diintregasikan 
 
 ## Demo
 * Login
-![Gambar teks editor VS Code]()
+![Gambar teks editor VS Code](./public/demos/login.png)
