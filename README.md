@@ -23,3 +23,45 @@ Aplikasi Ini menggunakan framework Vue 3 & Vite (SPA) yang telah diintregasikan 
   * CRUD
   * Pagination
 
+## Demo
+* Login
+
+![Halaman Login](./public/screenshots/login.png)
+* Dashboard
+
+![Halaman dashboard 1](./public/screenshots/Dashboard/dashboard.png)
+
+![Halaman dashboard 2](./public/screenshots/Dashboard/dashboard-nav.png)
+
+![Halaman dashboard responsive 1](./public/screenshots/Dashboard/dashboard-responsive.png)
+
+![Halaman dashboard responsive 2](./public/screenshots/Dashboard/dashboard-nav-responsive.png)
+* Page Positions
+    * Halaman Utama
+    ![Halaman Positions](./public/screenshots/Positions/default.jpg)
+    * Tambah
+    ![Tambah Position](./public/screenshots/Positions/Add.JPG)
+    * Edit
+    ![Edit Position](./public/screenshots/Positions/Edit.JPG)
+    * Hapus
+    ![Hapus Position](./public/screenshots/Positions/Delete.JPG)
+* Page Employees
+    * Halaman Utama
+    ![Halaman Employees](./public/screenshots/Employees/default.jpg)
+    * Tambah
+    ![Tambah Employee](./public/screenshots/Employees/Add.JPG)
+    * Edit
+    ![Edit Employee](./public/screenshots/Employees/Edit.JPG)
+    * Hapus
+    ![Hapus Employee](./public/screenshots/Employees/Delete.JPG)
+* Page Sallarys
+    * Halaman Utama
+    ![Halaman Sallarys](./public/screenshots/Sallarys/Default.jpg)
+    * Tambah
+    ![Tambah Sallary](./public/screenshots/Sallarys/Add.JPG)
+    * Edit
+    ![Edit Sallary](./public/screenshots/Sallarys/Edit.JPG)
+    * Hapus
+    ![Hapus Sallary](./public/screenshots/Sallarys/Delete.JPG)
+
+Thanks you...
