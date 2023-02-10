@@ -38,7 +38,7 @@ Aplikasi Ini menggunakan framework Vue 3 & Vite (SPA) yang telah diintregasikan 
 ![Halaman dashboard responsive 2](./public/screenshots/Dashboard/dashboard-nav-responsive.png)
 * Page Positions
     * Halaman Utama
-    ![Halaman Positions](./public/screenshots/Positions/default.jpg)
+    ![Halaman Positions](./public/screenshots/Positions/Default.jpg)
     * Tambah
     ![Tambah Position](./public/screenshots/Positions/Add.JPG)
     * Edit
@@ -47,7 +47,7 @@ Aplikasi Ini menggunakan framework Vue 3 & Vite (SPA) yang telah diintregasikan 
     ![Hapus Position](./public/screenshots/Positions/Delete.JPG)
 * Page Employees
     * Halaman Utama
-    ![Halaman Employees](./public/screenshots/Employees/default.jpg)
+    ![Halaman Employees](./public/screenshots/Employees/Default.jpg)
     * Tambah
     ![Tambah Employee](./public/screenshots/Employees/Add.JPG)
     * Edit
