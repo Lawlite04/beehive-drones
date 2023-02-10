@@ -1,3 +1,8 @@
+<script setup>
+import Layout from '../layouts/Layout.vue'
+</script>
 <template>
-    <h1>Not Found</h1>
+    <Layout>
+        <h1>Not Found</h1>
+    </Layout>
 </template>

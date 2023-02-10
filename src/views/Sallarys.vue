@@ -3,6 +3,7 @@ import { Icon } from '@iconify/vue'
 import { ref } from '@vue/reactivity'
 import { filters } from '../helpers/filters'
 
+import Layout from '../layouts/Layout.vue'
 import BtnDropdown from '../components/BtnDropdown.vue'
 import Pagination from '../components/Pagination.vue'
 import Modal from '../components/Modal.vue'
@@ -10,99 +11,101 @@ import ModalAlert from '../components/ModalAlert.vue'
 
 </script>
 <template>
-    <div class="px-8 py-6">
-        <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
-            <!-- Table -->
-            <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
-                <caption
-                    class="px-5 pt-5 text-lg font-semibold text-left text-gray-900 bg-white dark:text-white dark:bg-gray-800">
-                    Sallarys
-                    <p class="mt-1 text-sm font-normal text-gray-500 dark:text-gray-400">
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus hic temporibus est suscipit
-                        consequatur, voluptatem explicabo. Non reiciendis labore tenetur!
-                    </p>
-                    <div class="flex items-center justify-between pb-4 bg-white dark:bg-gray-900">
-                        <BtnDropdown :countDataPaginate="countDataPaginate" @change-show-value="changeShowValue" class="mt-4" />
-                        <button @click.prevent="onToggleModalCreate" class="flex justify-center items-center gap-1 bg-green-500 rounded-lg text-sm text-white font-medium px-4 py-2 hover:bg-green-500/90 focus:outline-none focus:ring-4 focus:ring-green-500/50 transition duration-200 ease-in-out">
-                            <Icon class="w-6 h-6" icon="ic:round-plus" />
-                            <span>Add</span>
-                        </button>
-                    </div>
-                </caption>
-                <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
-                    <tr>
-                        <th scope="col" class="px-6 py-3">
-                            No
-                        </th>
-                        <th scope="col" class="px-6 py-3">
-                            Employee
-                        </th>
-                        <th scope="col" class="px-6 py-3">
-                            Sallary
-                        </th>
-                        <th scope="col" class="px-6 py-3">
-                            Info
-                        </th>
-                        <th scope="col" class="px-6 py-3">
-                            <!-- <span class="sr-only">Edit</span> -->
-                            Action
-                        </th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr v-if="isLoading" class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-                        <th scope="row" colspan="6" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap text-center dark:text-white">
-                            <div role="status" class="inline-block">
-                                <svg aria-hidden="true" class="w-8 h-8 mr-2 text-gray-200 animate-spin dark:text-gray-600 fill-blue-600" viewBox="0 0 100 101" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M100 50.5908C100 78.2051 77.6142 100.591 50 100.591C22.3858 100.591 0 78.2051 0 50.5908C0 22.9766 22.3858 0.59082 50 0.59082C77.6142 0.59082 100 22.9766 100 50.5908ZM9.08144 50.5908C9.08144 73.1895 27.4013 91.5094 50 91.5094C72.5987 91.5094 90.9186 73.1895 90.9186 50.5908C90.9186 27.9921 72.5987 9.67226 50 9.67226C27.4013 9.67226 9.08144 27.9921 9.08144 50.5908Z" fill="currentColor"/>
-                                    <path d="M93.9676 39.0409C96.393 38.4038 97.8624 35.9116 97.0079 33.5539C95.2932 28.8227 92.871 24.3692 89.8167 20.348C85.8452 15.1192 80.8826 10.7238 75.2124 7.41289C69.5422 4.10194 63.2754 1.94025 56.7698 1.05124C51.7666 0.367541 46.6976 0.446843 41.7345 1.27873C39.2613 1.69328 37.813 4.19778 38.4501 6.62326C39.0873 9.04874 41.5694 10.4717 44.0505 10.1071C47.8511 9.54855 51.7191 9.52689 55.5402 10.0491C60.8642 10.7766 65.9928 12.5457 70.6331 15.2552C75.2735 17.9648 79.3347 21.5619 82.5849 25.841C84.9175 28.9121 86.7997 32.2913 88.1811 35.8758C89.083 38.2158 91.5421 39.6781 93.9676 39.0409Z" fill="currentFill"/>
-                                </svg>
-                                <span class="sr-only">Loading...</span>
-                            </div>
-                        </th>
-                    </tr>
-                    <tr v-else v-for="(sallary, index) in sallarys" :key="index" class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-                        <th scope="row" width="5%" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                            {{ ++index }}
-                        </th>
-                        <td class="px-6 py-4">
-                            <div v-html="getEmployee(sallary.employee_id)"></div>
-                        </td>
-                        <td class="px-6 py-4">
-                            <p><b>Basic sallary: </b>Rp. {{ filters.formatPrice(sallary.basic_sallary) }}</p>
-                            <p><b>Allowance: </b>Rp. {{ filters.formatPrice(sallary.allowance) }}</p>
-                        </td>
-                        <td class="px-6 py-4">
-                            <p><b>Pay day: </b>{{ filters.formattedDate(sallary.payday) }}</p>
-                            <p><b>Notes: </b>{{ sallary.notes }}</p>
-                        </td>
-                        <td class="px-6 py-4">
-                            <a @click.prevent="onToggleModalEdit(sallary._id, sallary.basic_sallary, sallary.allowance, sallary.payday, sallary.notes, (sallary.employee_id) ? sallary.employee_id._id : '')" href="#" class="font-medium text-blue-600 mr-1 dark:text-blue-500 hover:underline">Edit</a>
-                            |
-                            <a @click.prevent="onToggleModalDelete(sallary._id)" href="#" class="font-medium text-red-600 ml-1 dark:text-blue-500 hover:underline">Delete</a>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-            <!-- Table -->
+    <Layout>
+        <div class="px-8 py-6">
+            <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
+                <!-- Table -->
+                <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+                    <caption
+                        class="px-5 pt-5 text-lg font-semibold text-left text-gray-900 bg-white dark:text-white dark:bg-gray-800">
+                        Sallarys
+                        <p class="mt-1 text-sm font-normal text-gray-500 dark:text-gray-400">
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus hic temporibus est suscipit
+                            consequatur, voluptatem explicabo. Non reiciendis labore tenetur!
+                        </p>
+                        <div class="flex items-center justify-between pb-4 bg-white dark:bg-gray-900">
+                            <BtnDropdown :countDataPaginate="countDataPaginate" @change-show-value="changeShowValue" class="mt-4" />
+                            <button @click.prevent="onToggleModalCreate" class="flex justify-center items-center gap-1 bg-green-500 rounded-lg text-sm text-white font-medium px-4 py-2 hover:bg-green-500/90 focus:outline-none focus:ring-4 focus:ring-green-500/50 transition duration-200 ease-in-out">
+                                <Icon class="w-6 h-6" icon="ic:round-plus" />
+                                <span>Add</span>
+                            </button>
+                        </div>
+                    </caption>
+                    <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+                        <tr>
+                            <th scope="col" class="px-6 py-3">
+                                No
+                            </th>
+                            <th scope="col" class="px-6 py-3">
+                                Employee
+                            </th>
+                            <th scope="col" class="px-6 py-3">
+                                Sallary
+                            </th>
+                            <th scope="col" class="px-6 py-3">
+                                Info
+                            </th>
+                            <th scope="col" class="px-6 py-3">
+                                <!-- <span class="sr-only">Edit</span> -->
+                                Action
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr v-if="isLoading" class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                            <th scope="row" colspan="6" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap text-center dark:text-white">
+                                <div role="status" class="inline-block">
+                                    <svg aria-hidden="true" class="w-8 h-8 mr-2 text-gray-200 animate-spin dark:text-gray-600 fill-blue-600" viewBox="0 0 100 101" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M100 50.5908C100 78.2051 77.6142 100.591 50 100.591C22.3858 100.591 0 78.2051 0 50.5908C0 22.9766 22.3858 0.59082 50 0.59082C77.6142 0.59082 100 22.9766 100 50.5908ZM9.08144 50.5908C9.08144 73.1895 27.4013 91.5094 50 91.5094C72.5987 91.5094 90.9186 73.1895 90.9186 50.5908C90.9186 27.9921 72.5987 9.67226 50 9.67226C27.4013 9.67226 9.08144 27.9921 9.08144 50.5908Z" fill="currentColor"/>
+                                        <path d="M93.9676 39.0409C96.393 38.4038 97.8624 35.9116 97.0079 33.5539C95.2932 28.8227 92.871 24.3692 89.8167 20.348C85.8452 15.1192 80.8826 10.7238 75.2124 7.41289C69.5422 4.10194 63.2754 1.94025 56.7698 1.05124C51.7666 0.367541 46.6976 0.446843 41.7345 1.27873C39.2613 1.69328 37.813 4.19778 38.4501 6.62326C39.0873 9.04874 41.5694 10.4717 44.0505 10.1071C47.8511 9.54855 51.7191 9.52689 55.5402 10.0491C60.8642 10.7766 65.9928 12.5457 70.6331 15.2552C75.2735 17.9648 79.3347 21.5619 82.5849 25.841C84.9175 28.9121 86.7997 32.2913 88.1811 35.8758C89.083 38.2158 91.5421 39.6781 93.9676 39.0409Z" fill="currentFill"/>
+                                    </svg>
+                                    <span class="sr-only">Loading...</span>
+                                </div>
+                            </th>
+                        </tr>
+                        <tr v-else v-for="(sallary, index) in sallarys" :key="index" class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                            <th scope="row" width="5%" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                {{ ++index }}
+                            </th>
+                            <td class="px-6 py-4">
+                                <div v-html="getEmployee(sallary.employee_id)"></div>
+                            </td>
+                            <td class="px-6 py-4">
+                                <p><b>Basic sallary: </b>Rp. {{ filters.formatPrice(sallary.basic_sallary) }}</p>
+                                <p><b>Allowance: </b>Rp. {{ filters.formatPrice(sallary.allowance) }}</p>
+                            </td>
+                            <td class="px-6 py-4">
+                                <p><b>Pay day: </b>{{ filters.formattedDate(sallary.payday) }}</p>
+                                <p><b>Notes: </b>{{ sallary.notes }}</p>
+                            </td>
+                            <td class="px-6 py-4">
+                                <a @click.prevent="onToggleModalEdit(sallary._id, sallary.basic_sallary, sallary.allowance, sallary.payday, sallary.notes, (sallary.employee_id) ? sallary.employee_id._id : '')" href="#" class="font-medium text-blue-600 mr-1 dark:text-blue-500 hover:underline">Edit</a>
+                                |
+                                <a @click.prevent="onToggleModalDelete(sallary._id)" href="#" class="font-medium text-red-600 ml-1 dark:text-blue-500 hover:underline">Delete</a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <!-- Table -->
 
-            <!-- Pagination -->
-            <Pagination
-            :datas="sallarys"
-            :total="total"
-            :pagination="pagination"
-            :count-data-paginate="countDataPaginate"
-            :countPagePaginate="countPagePaginate"
-            :isPrevious="isPrevious"
-            :isNext="isNext"
-            @getList="getList"
-            @onPrevious="Previous" 
-            @onNext="Next"
-            @getNumber="getNumber"
-            />
-            <!-- Pagination -->
+                <!-- Pagination -->
+                <Pagination
+                :datas="sallarys"
+                :total="total"
+                :pagination="pagination"
+                :count-data-paginate="countDataPaginate"
+                :countPagePaginate="countPagePaginate"
+                :isPrevious="isPrevious"
+                :isNext="isNext"
+                @getList="getList"
+                @onPrevious="Previous" 
+                @onNext="Next"
+                @getNumber="getNumber"
+                />
+                <!-- Pagination -->
+            </div>
         </div>
-    </div>
+    </Layout>
 
     <!-- Modal Add -->
     <Modal 
@@ -184,10 +187,12 @@ import ModalAlert from '../components/ModalAlert.vue'
 </template>
 
 <script>
+import authService from '../services/auth.service'
+
 export default {
     data() {
         return {
-            token: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2Mzg4NmRiODEwY2E1M2Y1YzZlZjc3ZTciLCJuYW1lIjoiSFJEIEJlZWhpdmUiLCJlbWFpbCI6ImhyZEBtYWlsLmNvbSIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTY3NTg2MTU3NiwiZXhwIjoxNjc2NDY2Mzc2fQ.gxqiyKt25bkuZZr8Z92_jXhE4O-mXN8JkapU0Kf4Gvk",
+            tokenAuth: authService.getTokenUser(),
             sallarys: [],
             employees: [],
             total: 0,
@@ -232,7 +237,7 @@ export default {
                 headers: {
                     "Content-Type": "application/json",
                     Accept: "application/json",
-                    Authorization: `Bearer ${this.token}`,
+                    Authorization: `Bearer ${this.tokenAuth}`,
                 },
             }).then((response) => {
                 this.sallarys = JSON.parse(JSON.stringify(response.data.data.results));
@@ -246,7 +251,7 @@ export default {
                 headers: {
                     "Content-Type": "application/json",
                     Accept: "application/json",
-                    Authorization: `Bearer ${this.token}`,
+                    Authorization: `Bearer ${this.tokenAuth}`,
                 },
             }).then((response) => {
                 this.employees = response.data.data;
@@ -264,7 +269,7 @@ export default {
                 headers: {
                     "Content-Type": "application/json",
                     Accept: "application/json",
-                    Authorization: `Bearer ${this.token}`,
+                    Authorization: `Bearer ${this.tokenAuth}`,
                 },
             }).then((response) => {
                 console.log(response.data)
@@ -284,7 +289,7 @@ export default {
                 headers: {
                     "Content-Type": "application/json",
                     Accept: "application/json",
-                    Authorization: `Bearer ${this.token}`,
+                    Authorization: `Bearer ${this.tokenAuth}`,
                 },
             }).then((response) => {
                 console.log(response.data)
@@ -293,7 +298,7 @@ export default {
                 console.log(errors);
             });
     
-            this.onToggleModalEdit(null)
+            this.onToggleModalEdit()
             this.isLoading = false
         },
         async onDelete(id) {
@@ -304,7 +309,7 @@ export default {
                 headers: {
                     "Content-Type": "application/json",
                     Accept: "application/json",
-                    Authorization: `Bearer ${this.token}`,
+                    Authorization: `Bearer ${this.tokenAuth}`,
                 },
             }).then((response) => {
                 console.log(response.data)
@@ -326,7 +331,7 @@ export default {
         onToggleModalCreate() {
             this.toggleModalCreate = !this.toggleModalCreate
         },
-        onToggleModalEdit(id, basic_sallary, allowance, payday, notes, employee_id) {
+        onToggleModalEdit(id = null, basic_sallary = null, allowance = null, payday = null, notes = null, employee_id = null) {
             this.id = id
             this.toggleModalEdit = !this.toggleModalEdit
             if(this.toggleModalEdit) {

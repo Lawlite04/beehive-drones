@@ -1,6 +1,7 @@
 <script setup>
 import { Icon } from '@iconify/vue';
-import { computed } from '@vue/runtime-core';
+import { computed } from '@vue/runtime-core'
+
 const props = defineProps(['toggle'])
 defineEmits(['clickToggle', 'clickToggleResponsive'])
 
@@ -26,7 +27,7 @@ const displayBg = computed(() => {
             <li>
                 <router-link :to="{name: 'Dashboard'}" class="nav-link mb-8">
                     <span class="mr-4">
-                        <Icon class="w-7 h-7" icon="ic:baseline-apple" />
+                        <Icon class="w-8 h-8" icon="icon-park-outline:drone" />
                     </span>
                     <span class="text-lg font-semibold">Beehive Drones</span>
                 </router-link>

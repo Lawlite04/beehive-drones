@@ -1,15 +1,10 @@
 import { createApp } from 'vue'
 // import './style.css'
-
-// router
-import { router } from './helpers/router'
-
-// tailwindcss
-import './index.css'
-
-// axios
+import router from './helpers/router'
+// store
 import axios from 'axios'
 import VueAxios from 'vue-axios'
+import './index.css'
 
 import App from './App.vue'
 
