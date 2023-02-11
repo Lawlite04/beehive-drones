@@ -16,12 +16,18 @@ Aplikasi Ini menggunakan framework Vue 3 & Vite (SPA) yang telah diintregasikan 
 * Data Posisi Pegawai
   * CRUD
   * Pagination
+  * Menampilkan banyak data
+  * Searching data
 * Data Pegawai
   * CRUD
   * Pagination
+  * Menampilkan banyak data
+  * Searching data
 * Data Gaji Pegawai
   * CRUD
   * Pagination
+  * Menampilkan banyak data
+  * Searching data
 
 ## Demo
 * Login

@@ -23,7 +23,13 @@ import ModalAlert from '../components/ModalAlert.vue'
                             consequatur, voluptatem explicabo. Non reiciendis labore tenetur!
                         </p>
                         <div class="flex items-center justify-between pb-4 bg-white dark:bg-gray-900">
-                            <BtnDropdown :countDataPaginate="countDataPaginate" @change-show-value="changeShowValue" class="mt-4" />
+                            <div class="flex gap-4 mt-4">
+                                <BtnDropdown :countDataPaginate="countDataPaginate" @change-show-value="changeShowValue" />
+                                <div class="relative">
+                                    <input v-model="search" type="search" class="border rounded-md pl-8 pr-4 py-1.5 text-sm font-normal focus:outline-none focus:border-blue-500" placeholder="Search...">
+                                    <Icon class="text-gray-500 w-5 h-5 absolute left-2 top-1/2 -translate-y-1/2" icon="material-symbols:search-rounded" />
+                                </div>
+                            </div>
                             <button @click.prevent="onToggleModalCreate" class="flex justify-center items-center gap-1 bg-green-500 rounded-lg text-sm text-white font-medium px-4 py-2 hover:bg-green-500/90 focus:outline-none focus:ring-4 focus:ring-green-500/50 transition duration-200 ease-in-out">
                                 <Icon class="w-6 h-6" icon="ic:round-plus" />
                                 <span>Add</span>
@@ -204,6 +210,7 @@ export default {
         return {
             tokenAuth: authService.getTokenUser(),
             employees: [],
+            currentEmployees: [],
             positions: [],
             total: 0,
             isLoading: false,
@@ -222,10 +229,17 @@ export default {
                 position_id: '',
                 isDeleted: false
             },
+            search: '',
+            timeout: null,
         };
     },
     mounted() {
         this.getList();
+    },
+    watch: {
+        search(newVal) {
+            this.searching(newVal)
+        }
     },
     computed: {
         countPagePaginate() {
@@ -251,6 +265,7 @@ export default {
                     Authorization: `Bearer ${this.tokenAuth}`,
                 },
             }).then((response) => {
+                this.currentEmployees = JSON.parse(JSON.stringify(response.data.data.results));
                 this.employees = JSON.parse(JSON.stringify(response.data.data.results));
                 this.total = response.data.data.total;
             }).catch((errors) => {
@@ -331,6 +346,21 @@ export default {
 
             this.onToggleModalDelete(null)
             this.isLoading = false
+        },
+        searching(param) {
+            clearTimeout(this.timeout)
+            this.timeout = setTimeout(() => {
+                if(param) {
+                    param = param.toLowerCase()
+                    this.employees = this.currentEmployees.filter((el) => {
+                        return Object.values(el).some((val) => 
+                            String(val).toLowerCase().includes(param)
+                        );
+                    })
+                } else {
+                    this.employees = this.currentEmployees
+                }
+            }, 1000);
         },
         resetForm() {
             this.form.nik= '';
